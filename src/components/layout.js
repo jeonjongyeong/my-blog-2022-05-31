@@ -1,4 +1,4 @@
-import { Link } from "gatsby";
+import { Link, useStaticQuery, graphql } from "gatsby";
 import React from "react";
 import {
   container,
@@ -9,11 +9,23 @@ import {
 } from "./layout.module.css";
 
 function Layout({ pageTitle, children }) {
+  const data = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `);
   return (
     //상단
     <>
       <div className={container}>
-        <title>{pageTitle}</title>
+        <title>
+          {pageTitle} | {data.site.siteMetadata.title}
+        </title>
+        <header>{data.site.siteMetadata.title}</header>
         <div style={{ display: "flex", gap: 10 }}>
           <ul className={navLinks}>
             <li className={navLinkItem}>
