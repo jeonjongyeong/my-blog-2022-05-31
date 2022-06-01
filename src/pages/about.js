@@ -4,7 +4,7 @@ import Layout from "../components/layout";
 
 function AboutPage() {
   return (
-    <Layout>
+    <Layout pageTitle="Index">
       <main>
         <title>About</title>
         <h1>About 페이지 입니다.</h1>

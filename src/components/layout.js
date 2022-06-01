@@ -2,11 +2,12 @@ import { Link } from "gatsby";
 import React from "react";
 import { container } from "./layout.module.css";
 
-function Layout({ children }) {
+function Layout({ pageTitle, children }) {
   return (
     //상단
     <>
       <div className={container}>
+        <title>{pageTitle}</title>
         <div style={{ display: "flex", gap: 10 }}>
           <Link to="/">HomePage</Link>
           <br />
