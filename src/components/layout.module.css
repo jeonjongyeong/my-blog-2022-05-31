@@ -1,5 +1,5 @@
 .container {
-  margin : 0 auto;
+  margin : auto;
   max-width: 500px;
   font-family: sans-serif;
   background-color: seashell;
@@ -7,6 +7,7 @@
 
 .heading {
   color: rebeccapurple;
+  text-align: center;
 }
 .nav-links {
   display: flex;
@@ -18,4 +19,12 @@
 }
 .nav-link-text {
   color: black;
+}
+
+.site-title {
+  font-size: 3rem;
+  color: gray;
+  font-weight: 700;
+  margin: 3rem 0;
+  text-align: center;
 }

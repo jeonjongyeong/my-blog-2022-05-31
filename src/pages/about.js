@@ -5,9 +5,10 @@ import Layout from "../components/layout";
 
 function AboutPage() {
   return (
-    <Layout pageTitle="Index">
+    <Layout pageTitle="About">
       <main>
         <title>About</title>
+        <p>전종영 블로그</p>
       </main>
       <StaticImage
         alt="Clifford, a reddish-brown pitbull, dozing in a bean bag chair"
