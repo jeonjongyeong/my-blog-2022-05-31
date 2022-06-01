@@ -23,22 +23,29 @@ function Layout({ pageTitle, children }) {
     //상단
     <>
       <div className={container}>
-        <title>
-          {pageTitle} | {data.site.siteMetadata.title}
-        </title>
-        <header className={siteTitle}>{data.site.siteMetadata.title}</header>
-        <div style={{ display: "flex", gap: 10 }}>
+        <div>
           <ul className={navLinks}>
             <li className={navLinkItem}>
               <Link to="/" className={navLinkText}>
                 HomePage
               </Link>
             </li>
-            <li>
-              <Link to="/about">About</Link>
+            <li className={navLinkItem}>
+              <Link to="/about" className={navLinkText}>
+                About
+              </Link>
+            </li>
+            <li className={navLinkItem}>
+              <Link to="/blog" className={navLinkText}>
+                Blog
+              </Link>
             </li>
           </ul>
         </div>
+        <title>
+          {pageTitle} | {data.site.siteMetadata.title}
+        </title>
+        <header className={siteTitle}>{data.site.siteMetadata.title}</header>
 
         <main>
           {" "}
@@ -46,6 +53,7 @@ function Layout({ pageTitle, children }) {
           {children}
         </main>
         {/* 하단 */}
+        <br />
         <div>CopyRight</div>
       </div>
     </>
