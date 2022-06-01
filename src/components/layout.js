@@ -1,6 +1,12 @@
 import { Link } from "gatsby";
 import React from "react";
-import { container } from "./layout.module.css";
+import {
+  container,
+  heading,
+  navLinks,
+  navLinkItem,
+  navLinkText,
+} from "./layout.module.css";
 
 function Layout({ pageTitle, children }) {
   return (
@@ -9,12 +15,23 @@ function Layout({ pageTitle, children }) {
       <div className={container}>
         <title>{pageTitle}</title>
         <div style={{ display: "flex", gap: 10 }}>
-          <Link to="/">HomePage</Link>
-          <br />
-          <Link to="/about">About</Link>
+          <ul className={navLinks}>
+            <li className={navLinkItem}>
+              <Link to="/" className={navLinkText}>
+                HomePage
+              </Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+          </ul>
         </div>
 
-        <main>{children}</main>
+        <main>
+          {" "}
+          <h1 className={heading}>{pageTitle}</h1>
+          {children}
+        </main>
         {/* 하단 */}
         <div>CopyRight</div>
       </div>
