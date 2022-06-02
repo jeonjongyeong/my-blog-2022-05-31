@@ -1,7 +1,6 @@
 import { StaticImage } from "gatsby-plugin-image";
 import React from "react";
-import Layout from "../../components/layout";
-import { MDXRenderer } from "gatsby-plugin-mdx";
+import Layout from "../../components/Layout";
 import { Link, graphql } from "gatsby";
 
 const BlogPage = ({ data }) => {
