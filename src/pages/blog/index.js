@@ -1,6 +1,6 @@
 import { StaticImage } from "gatsby-plugin-image";
 import React from "react";
-import Layout from "../components/layout";
+import Layout from "../../components/layout";
 import { graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
