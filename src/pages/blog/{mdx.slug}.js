@@ -1,15 +1,18 @@
-import * as React from "react";
+import React from "react";
 import { graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import Layout from "../../components/layout";
+import Layout from "../../components/Layout";
 import CodeBlock from "../../components/CodeBlock";
 import { MDXProvider } from "@mdx-js/react";
 
 const BlogPost = ({ data }) => {
+  const tags = data.mdx.frontmatter.tags;
+
   const image =
     data.mdx.frontmatter.hero_image &&
     getImage(data.mdx.frontmatter.hero_image);
+
   return (
     <Layout pageTitle={data.mdx.frontmatter.title}>
       <p>{data.mdx.frontmatter.date}</p>
@@ -23,6 +26,7 @@ const BlogPost = ({ data }) => {
             Photo Credit:{" "}
             <a
               target="_blank"
+              rel="noreferrer"
               href={data.mdx.frontmatter.hero_image_credit_link}
             >
               {data.mdx.frontmatter.hero_image_credit_text}
@@ -30,7 +34,6 @@ const BlogPost = ({ data }) => {
           </p>
         </>
       )}
-
       <hr />
       <MDXProvider
         components={{
@@ -39,14 +42,14 @@ const BlogPost = ({ data }) => {
       >
         <MDXRenderer>{data.mdx.body}</MDXRenderer>
       </MDXProvider>
+      <hr />
+      TAGS : {tags && tags.join(", ")}
     </Layout>
   );
 };
-
 export const query = graphql`
   query ($id: String) {
     mdx(id: { eq: $id }) {
-      body
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
@@ -57,9 +60,10 @@ export const query = graphql`
             gatsbyImageData
           }
         }
+        tags
       }
+      body
     }
   }
 `;
-
 export default BlogPost;

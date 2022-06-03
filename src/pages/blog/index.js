@@ -3,6 +3,7 @@ import React from "react";
 import Layout from "../../components/layout";
 import { Link, graphql } from "gatsby";
 import kebabCase from "lodash.kebabcase";
+import { tags } from "../../components/layout.module.css";
 
 const BlogPage = ({ data }) => {
   return (
@@ -15,7 +16,7 @@ const BlogPage = ({ data }) => {
               <Link to={`/blog/${node.slug}`}>{node.frontmatter.title}</Link>
             </h2>
             <p>Posted: {node.frontmatter.date}</p>
-            <div>
+            <div className={tags}>
               <ul>
                 {node.frontmatter.tags
                   ? node.frontmatter.tags.map((tag) => (
