@@ -1,19 +1,35 @@
 import { StaticImage } from "gatsby-plugin-image";
 import React from "react";
-import Layout from "../../components/Layout";
+import Layout from "../../components/layout";
 import { Link, graphql } from "gatsby";
+import kebabCase from "lodash.kebabcase";
 
 const BlogPage = ({ data }) => {
   return (
     <Layout pageTitle="My Blog Posts">
       <p>나의 블로그 페이지</p>
       {data.allMdx.nodes.map((node) => (
-        <article key={node.id}>
-          <h2>
-            <Link to={`/blog/${node.slug}`}>{node.frontmatter.title}</Link>
-          </h2>
-          <p>Posted: {node.frontmatter.date}</p>
-        </article>
+        <>
+          <article key={node.id}>
+            <h2>
+              <Link to={`/blog/${node.slug}`}>{node.frontmatter.title}</Link>
+            </h2>
+            <p>Posted: {node.frontmatter.date}</p>
+            <div>
+              <ul>
+                {node.frontmatter.tags
+                  ? node.frontmatter.tags.map((tag) => (
+                      <li key={kebabCase(tag)}>
+                        <Link to={`/tags/${kebabCase(tag)}`}>
+                          {kebabCase(tag)}
+                        </Link>
+                      </li>
+                    ))
+                  : null}
+              </ul>
+            </div>
+          </article>
+        </>
       ))}
       <StaticImage
         alt="image"
@@ -30,6 +46,7 @@ export const query = graphql`
         frontmatter {
           date(formatString: "MMMM D, YYYY")
           title
+          tags
         }
         id
         slug
